@@ -12,7 +12,7 @@ class TodosService {
     return todo
   }
   async edit(body) {
-    const todo = dbContext.Todos.findById(body.id)
+    const todo = await dbContext.Todos.findById(body.id)
     todo.completed = body.completed !== null ? body.completed : todo.completed
     todo.description = body.description || todo.description
     await todo.save()
