@@ -8,8 +8,8 @@ export class TodosController extends BaseController {
     this.router
       .get('', this.getAll)
       .post('', this.create)
-      .put(':id', this.edit)
-      .delete(':id', this.delete)
+      .put('/:id', this.edit)
+      .delete('/:id', this.delete)
   }
   async getAll(req, res, next) {
     try {
@@ -38,6 +38,7 @@ export class TodosController extends BaseController {
       next(error)
     }
   }
+
   async delete(req, res, next) {
     try {
       await todosService.delete(req.params.name, req.params.id)
